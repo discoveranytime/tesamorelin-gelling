@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesamorelin Gelling &mdash; The Cloud-and-Gel Science | Formulation Science</title>
+<meta name="description" content="Why tesamorelin gels: thermal shock, agitation, concentration, and the pH/charge chemistry. Educational only.">
+<style>
+:root{
+  --bg0:#06070d; --bg1:#0a0c17;
+  --ink:#edf0f9; --muted:#a9b1c9; --faint:#7f88a5;
+  --sky:#D9BE6B; --sky-deep:#6B8CAE;
+  --teal:#6B8CAE; --teal-deep:#2E4459;
+  --org:#6B8CAE; --org-deep:#2E4459;
+  --amber:#C9A94E; --rose:#7A9BB8; --cyan:#D9BE6B;
+  --card:#0d1020; --card2:#12162b;
+  --line:rgba(255,255,255,.09);
+  --grad:linear-gradient(100deg,#D9BE6B 5%,#6B8CAE 50%,#2E4459 95%);
+  --ongrad:#0a0c14;
+  --radius:18px;
+  --acc1:#D9BE6B;--acc2:#6B8CAE;--acc3:#2E4459;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --disp:"Avenir Next","Segoe UI",-apple-system,BlinkMacSystemFont,Inter,Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg0);color:var(--ink);
+  font-size:1.06rem;line-height:1.75;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.bg-grad{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 620px at 12% -6%, rgba(107,140,174,0.288), transparent 60%),
+    radial-gradient(820px 600px at 88% 22%, rgba(46,68,89,0.192), transparent 60%),
+    radial-gradient(1000px 800px at 50% 110%, rgba(217,190,107,0.192), transparent 62%),
+    radial-gradient(700px 500px at 78% 78%, rgba(107,140,174,0.096), transparent 60%)}
+#dots{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.85}
+.orb{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px)}
+.o1{width:520px;height:520px;left:-140px;top:6%;background:radial-gradient(circle,rgba(107,140,174,0.24),transparent 70%);animation:drift1 38s ease-in-out infinite alternate}
+.o2{width:460px;height:460px;right:-120px;top:38%;background:radial-gradient(circle,rgba(46,68,89,0.192),transparent 70%);animation:drift2 46s ease-in-out infinite alternate}
+.o3{width:430px;height:430px;left:24%;bottom:-160px;background:radial-gradient(circle,rgba(217,190,107,0.192),transparent 70%);animation:drift3 54s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0)}to{transform:translate(120px,80px)}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-100px,-70px)}}
+@keyframes drift3{from{transform:translate(0,0)}to{transform:translate(90px,-80px)}}
+#confetti{position:fixed;inset:0;z-index:65;pointer-events:none;opacity:0;transition:opacity .6s ease}
+#confetti.show{opacity:1}
+#doneToast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);z-index:66;
+  background:var(--card);border:1px solid var(--line);color:var(--ink);
+  padding:.7rem 1.25rem;border-radius:999px;font-size:.9rem;font-weight:600;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease;
+  box-shadow:0 8px 30px rgba(0,0,0,.28)}
+#doneToast.show{opacity:1;transform:translate(-50%,0)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:60;background:var(--grad);border-radius:0 3px 3px 0}
+#themeToggle{position:fixed;top:12px;right:14px;z-index:70;display:flex;align-items:center;gap:2px;
+  border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px;
+  box-shadow:0 4px 18px rgba(0,0,0,.25)}
+#themeToggle .tt-opt{display:flex;align-items:center;gap:.35rem;border:0;cursor:pointer;
+  padding:.42rem .7rem;border-radius:999px;background:transparent;color:var(--muted);
+  font:700 .74rem var(--font);letter-spacing:.02em;transition:background .25s ease,color .25s ease}
+#themeToggle .tt-opt svg{width:15px;height:15px}
+#themeToggle .tt-opt:hover{color:var(--ink)}
+#themeToggle .tt-opt:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+#themeToggle .tt-opt.active{background:var(--grad);color:#0a0c14}
+@media(max-width:720px){#themeToggle{top:66px}}
+[data-theme="dark"]{color-scheme:dark}
+/* soft neutral gray light theme — never stark white */
+[data-theme="light"]{
+  --bg0:#e8ebf0; --bg1:#eef1f6;
+  --ink:#1b2436; --muted:#4d5871; --faint:#707a93;
+  --sky:#6B8CAE; --sky-deep:#2E4459;
+  --teal:#5A6E84; --teal-deep:#3E5468;
+  --org:#6B8CAE; --org-deep:#2E4459;
+  --amber:#8A7A3A; --rose:#5B7A94; --cyan:#3E5468;
+  --card:#f8fafc; --card2:#e9edf3;
+  --line:rgba(15,23,42,.14);
+  --grad:linear-gradient(100deg,#6B8CAE,#2E4459,#6B8CAE);
+  --ongrad:#ffffff;
+  color-scheme:light;
+}
+[data-theme="light"] nav.chapters{background:rgba(232,235,240,.88)}
+[data-theme="light"] .toc{background:rgba(232,235,240,.85)}
+[data-theme="light"] .toc a:hover{background:rgba(15,23,42,.06)}
+[data-theme="light"] .orb{opacity:.5}
+[data-theme="light"] #dots{opacity:.55}
+[data-theme="light"] .bg-grad{opacity:.55}
+nav.chapters{position:sticky;top:0;z-index:50;background:rgba(6,7,13,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.chapters .rail{max-width:1280px;margin:0 auto;padding:.65rem 1rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;padding-right:3.8rem}
+nav.chapters .rail::-webkit-scrollbar{display:none}
+nav.chapters a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:600;
+  letter-spacing:.04em;padding:.42rem .8rem;border:1px solid var(--line);border-radius:999px;white-space:nowrap;transition:all .25s ease}
+nav.chapters a:hover{color:var(--ink);border-color:rgba(255,255,255,.25)}
+nav.chapters a.active{color:#0a0c14;background:var(--grad);border-color:transparent}
+.toc{display:none}
+@media(min-width:1200px){
+  nav.chapters{display:none}
+  body{padding-left:248px}
+  .toc{display:flex;position:fixed;left:0;top:0;bottom:0;width:248px;z-index:45;
+    flex-direction:column;justify-content:center;gap:.2rem;
+    padding:2rem 1.1rem 2rem 1.4rem;
+    background:rgba(6,7,13,.72);backdrop-filter:blur(14px);border-right:1px solid var(--line)}
+  .toc .brand{font-family:var(--disp);font-weight:800;font-size:.98rem;letter-spacing:-.01em;
+    margin-bottom:1.2rem;line-height:1.35;color:var(--ink);
+    text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+  .toc .brand .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .toc a{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--muted);
+    font-size:.86rem;font-weight:600;padding:.55rem .7rem;border-radius:10px;
+    border:1px solid transparent;transition:all .22s ease;position:relative;z-index:1}
+  .toc a .n{font-size:.72rem;font-weight:800;color:var(--faint);width:1.7rem;flex:0 0 auto;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  .toc a:hover{color:var(--ink);background:rgba(255,255,255,.045)}
+  .toc a.active{color:var(--ongrad);font-weight:700}
+  .toc a.active .n{color:var(--ongrad)}
+  .toc-pill{position:absolute;left:1.4rem;top:0;width:calc(100% - 2.5rem);height:40px;border-radius:10px;
+    background:var(--grad);z-index:0;opacity:0;pointer-events:none;
+    transition:transform .5s cubic-bezier(.25,.8,.25,1),opacity .35s ease,height .3s ease}
+  .toc .mini{margin-top:1.5rem;font-size:.7rem;color:var(--faint);letter-spacing:.14em;
+    text-transform:uppercase;font-weight:700;display:flex;justify-content:space-between;align-items:baseline}
+  .toc .mini #tocPct{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    font-size:.85rem;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+  .toc .mini-bar{height:3px;background:rgba(255,255,255,.08);border-radius:99px;margin-top:.55rem;overflow:hidden}
+  .toc .mini-bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px}
+}
+.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 1.25rem}
+section.chapter{padding:4.2rem 0 1rem;scroll-margin-top:84px}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:1rem}
+.eyebrow .n{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:10px;
+  background:var(--grad);color:#0a0c14;font-size:.85rem;letter-spacing:0}
+h2{font-family:var(--disp);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:1rem}
+h2 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--muted);font-size:1.12rem;max-width:44rem;margin-bottom:2rem}
+.lede strong{color:var(--ink)}
+.hero{position:relative;z-index:1;text-align:center;padding:5.5rem 1.25rem 3.5rem;max-width:1280px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.04);
+  padding:.55rem 1.1rem;border-radius:999px;margin-bottom:1.6rem}
+.badge .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(251,191,36,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(251,191,36,.55)}70%{box-shadow:0 0 0 12px rgba(251,191,36,0)}100%{box-shadow:0 0 0 0 rgba(251,191,36,0)}}
+.hero h1{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.02;font-size:clamp(2.4rem,7.5vw,4.8rem);margin-bottom:1.1rem}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero .sub{color:var(--muted);font-size:clamp(1.05rem,2.4vw,1.3rem);max-width:42rem;margin:0 auto 2.2rem}
+.hero .sub strong{color:var(--ink)}
+.quickread{max-width:46rem;margin:0 auto;text-align:left;background:rgba(255,255,255,.035);
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.5rem;display:flex;gap:1rem;align-items:flex-start}
+.quickread .tag{flex:0 0 auto;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--grad);color:#0a0c14;border-radius:8px;padding:.35rem .7rem;margin-top:.2rem}
+.quickread p{color:var(--muted);font-size:.98rem}
+.quickread p strong{color:var(--ink)}
+.hero-stats{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.5rem;min-width:150px}
+.stat .num{font-family:var(--disp);font-size:2rem;font-weight:800;background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{font-size:.8rem;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.scroll-hint{margin-top:3rem;color:var(--faint);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(8px);opacity:1}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-bottom:1.5rem}
+@media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--ac,var(--grad))}
+.card.sky{--ac:linear-gradient(90deg,var(--sky-deep),var(--sky))}
+.card.teal{--ac:linear-gradient(90deg,var(--teal-deep),var(--teal))}
+.card.org{--ac:linear-gradient(90deg,var(--org-deep),var(--org))}
+.card h3{font-family:var(--disp);font-size:1.35rem;font-weight:800;margin-bottom:.4rem;letter-spacing:-.01em}
+.card h3 .chem{font-size:.85rem;font-weight:600;color:var(--faint);letter-spacing:.08em}
+.card p,.card li{color:var(--muted);font-size:.99rem}
+.card ul{list-style:none;margin-top:.9rem;display:grid;gap:.65rem}
+.card ul li{padding-left:1.5rem;position:relative}
+.card ul li::before{content:"▸";position:absolute;left:0;font-weight:800}
+.card.sky ul li::before{color:var(--sky)}
+.card.teal ul li::before{color:var(--teal)}
+.card.org ul li::before{color:var(--org)}
+.card strong{color:var(--ink)}
+.plain{margin-top:1.2rem;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.22);
+  border-radius:12px;padding:1rem 1.2rem;font-size:.96rem;color:var(--muted)}
+.plain b{color:var(--ink)}
+.plain .plabel{display:block;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--org);margin-bottom:.35rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;margin-bottom:1.4rem}
+.panel h3{font-family:var(--disp);font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.panel p{color:var(--muted);margin-bottom:.8rem}
+.panel p strong,.panel li strong{color:var(--ink)}
+.kv{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--line)}
+.kv:first-of-type{border-top:none}
+.kv .k{flex:0 0 auto;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:8px;margin-top:.25rem}
+.kv .k.s{background:rgba(124,199,255,.12);color:var(--sky);border:1px solid rgba(124,199,255,.35)}
+.kv .k.t{background:rgba(94,234,212,.10);color:var(--teal);border:1px solid rgba(94,234,212,.35)}
+.kv .k.o{background:rgba(251,146,60,.12);color:var(--org);border:1px solid rgba(251,146,60,.35)}
+.kv .k.a{background:rgba(251,191,36,.12);color:var(--amber);border:1px solid rgba(251,191,36,.35)}
+.kv .k.g{background:rgba(107,140,174,.12);color:var(--rose);border:1px solid rgba(107,140,174,.35)}
+.kv p{font-size:.99rem}
+.diagram{background:radial-gradient(600px 300px at 50% 0%,rgba(107,140,174,.10),transparent 70%),#090b15;
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;margin:0 0 1.4rem;overflow:hidden}
+.diagram svg{display:block;width:100%;height:auto}
+.diagram .cap{text-align:center;color:var(--faint);font-size:.85rem;margin-top:.9rem;letter-spacing:.03em}
+.flow{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-26}}
+.float-slow{animation:floaty 5s ease-in-out infinite}
+.float-slower{animation:floaty 7s ease-in-out infinite reverse}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.glow-pulse{animation:glowp 2.8s ease-in-out infinite}
+@keyframes glowp{0%,100%{opacity:.55}50%{opacity:1}}
+.ebar{margin:1rem 0 1.4rem}
+.ebar .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem}
+.ebar .row .t{font-weight:700;font-size:.98rem}
+.ebar .row .v{font-size:.88rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.ebar .track{height:14px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.ebar .fill{height:100%;width:0;border-radius:999px;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.ebar.in .fill{width:var(--w)}
+.ebar .note{font-size:.85rem;color:var(--faint);margin-top:.45rem}
+.anec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:720px){.anec-grid{grid-template-columns:1fr}}
+.anec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;position:relative;overflow:hidden}
+.anec::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.anec .stamp{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.12em;
+  color:var(--amber);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.08);
+  padding:.28rem .6rem;border-radius:7px;text-transform:uppercase;margin-bottom:.65rem}
+.anec h4{font-size:1.05rem;font-weight:800;margin-bottom:.5rem}
+.anec-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.55rem}
+.udot{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--amber);flex:0 0 auto;position:relative}
+.udot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--amber);animation:udotPulse 2.2s ease-out infinite}
+@keyframes udotPulse{0%{transform:scale(.55);opacity:.9}70%{opacity:.25}100%{transform:scale(1.25);opacity:0}}
+.anec-head .udot{margin-left:.15rem}
+.ulegend{display:flex;align-items:center;gap:.75rem;margin:0 0 1.5rem;padding:.85rem 1.15rem;border:1px dashed var(--line);border-radius:14px;background:rgba(255,255,255,.03);color:var(--muted);font-size:.93rem}
+.ulegend strong{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.udot::after{animation:none;opacity:.35;transform:scale(.8)}}
+/* --- layman example tiles: theme-accent pulse dot (distinct from amber anecdote dots) --- */
+.xtile{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1rem 1.25rem;margin:1.2rem 0;font-size:.94rem;line-height:1.65;color:var(--muted)}
+.xtile strong{color:var(--ink)}
+.xtile .xlead{font-weight:800;color:var(--sky)}
+.xdot{position:absolute;top:-7px;left:24px;width:13px;height:13px;border-radius:50%;background:var(--sky)}
+.xdot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--sky);animation:xdotPulse 2.2s ease-out infinite}
+@keyframes xdotPulse{0%{transform:scale(.55);opacity:.9}70%{opacity:.25}100%{transform:scale(1.25);opacity:0}}
+@media (prefers-reduced-motion:reduce){.xdot::after{animation:none;opacity:.35;transform:scale(.8)}}
+.anec-head .thumb{flex:0 0 auto;width:54px;height:54px;border-radius:14px;border:1px solid var(--line)}
+.anec-head h4{margin-bottom:0}
+.anec p{color:var(--muted);font-size:.95rem}
+.anec p strong{color:var(--ink)}
+.anec .caveat{margin-top:.8rem;font-size:.82rem;color:var(--faint);border-top:1px dashed var(--line);padding-top:.7rem}
+.folk-note{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.3);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.6rem;color:var(--muted);font-size:.98rem}
+.folk-note strong{color:var(--amber)}
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:720px){.safety-grid{grid-template-columns:1fr}}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem}
+.scard .level{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:.3rem .65rem;border-radius:7px;margin-bottom:.7rem}
+.scard h4{font-size:1.05rem;font-weight:800;margin-bottom:.5rem}
+.scard p{color:var(--muted);font-size:.95rem}
+.scard p strong{color:var(--ink)}
+.lvl-known .level{background:rgba(251,191,36,.1);color:var(--amber);border:1px solid rgba(251,191,36,.4)}
+.lvl-theory .level{background:rgba(251,146,60,.1);color:var(--org);border:1px solid rgba(251,146,60,.4)}
+.lvl-unknown .level{background:rgba(107,140,174,.1);color:var(--rose);border:1px solid rgba(107,140,174,.4)}
+.gloss{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
+.g-item{border-bottom:1px solid var(--line)}
+.g-item:last-child{border-bottom:none}
+.g-q{width:100%;background:none;border:none;color:var(--ink);font-family:var(--font);font-size:1.02rem;font-weight:700;
+  text-align:left;padding:1.05rem 1.4rem;cursor:pointer;display:flex;justify-content:flex-start;align-items:center;gap:1rem}
+.g-q:hover{background:rgba(255,255,255,.03)}
+.g-q .term{color:var(--sky)}
+.g-item:nth-child(3n+2) .g-q .term{color:var(--teal)}
+.g-item:nth-child(3n) .g-q .term{color:var(--org)}
+.g-q .plus{flex:0 0 auto;width:1.7rem;height:1.7rem;border-radius:50%;border:1px solid var(--line);margin-left:auto;
+  display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--muted);transition:all .3s}
+.g-item.open .g-q .plus{transform:rotate(45deg);background:var(--grad);color:#0a0c14;border-color:transparent}
+.gthumb{flex:0 0 auto;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);
+  animation:gaFloat 5s ease-in-out infinite}
+.gthumb.v2{animation:gaBreathe 4.4s ease-in-out infinite}
+.gthumb.v3{animation:gaTilt 6s ease-in-out infinite}
+@keyframes gaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes gaBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes gaTilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.g-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.g-a .gsci{padding:0 1.4rem 1rem;color:var(--muted);font-size:.95rem}
+.g-a .gsci strong{color:var(--ink)}
+.gslabel{display:block;font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.35rem}
+.g-a .plain{margin:0 1.4rem 1.3rem;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.22);
+  border-radius:12px;padding:1rem 1.2rem;font-size:.96rem;color:var(--muted)}
+.g-a .plain b{color:var(--ink)}
+.g-a .plain .plabel{display:block;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:.35rem}
+.take-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:1.6rem}
+@media(max-width:720px){.take-grid{grid-template-columns:1fr}}
+.take{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem}
+.take .tk{font-size:1.5rem;margin-bottom:.5rem}
+.take h4{font-size:1.05rem;font-weight:800;margin-bottom:.4rem}
+.take p{color:var(--muted);font-size:.95rem}
+.take p strong{color:var(--ink)}
+.limits{background:rgba(107,140,174,.05);border:1px solid rgba(107,140,174,.3);border-radius:var(--radius);
+  padding:1.4rem 1.6rem;margin-bottom:1.6rem}
+.limits h3{font-family:var(--disp);font-size:1.2rem;font-weight:800;margin-bottom:.7rem;color:var(--rose)}
+.limits ul{list-style:none;display:grid;gap:.6rem}
+.limits li{color:var(--muted);font-size:.97rem;padding-left:1.6rem;position:relative}
+.limits li::before{content:"✕";position:absolute;left:0;color:var(--rose);font-weight:800}
+.limits li strong{color:var(--ink)}
+footer{position:relative;z-index:1;margin-top:4rem;border-top:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+footer .wrap{padding-top:2.5rem;padding-bottom:3rem}
+footer .disc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;margin-bottom:1.4rem}
+footer .disc h3{font-size:1rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;color:var(--amber)}
+footer .disc p{color:var(--muted);font-size:.92rem;margin-bottom:.8rem}
+footer .disc p strong{color:var(--ink)}
+footer .meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  color:var(--faint);font-size:.85rem}
+footer .meta .srcs{display:flex;gap:.6rem;flex-wrap:wrap}
+footer .meta a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--faint)}
+footer .meta a:hover{color:var(--ink)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-bottom:1.4rem}
+@media(max-width:720px){.cmp{grid-template-columns:1fr}}
+.cmp .card{text-align:center}
+.cmp .big{font-family:var(--disp);font-size:2.3rem;font-weight:800;margin:.4rem 0}
+.cmp.sky .big{color:var(--sky)}.cmp .card.sky .big{color:var(--sky)}
+.cmp .card.teal .big{color:var(--teal)}
+.cmp .card.org .big{color:var(--org)}
+.cmp .sub2{font-size:.82rem;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+table.trial{width:100%;border-collapse:collapse;font-size:.94rem;margin:1rem 0 1.4rem}
+table.trial th,table.trial td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+table.trial th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:800}
+table.trial td{color:var(--muted)}
+table.trial td strong{color:var(--ink);font-variant-numeric:tabular-nums}
+table.trial tr td:first-child{color:var(--ink);font-weight:600}
+.twrap{overflow-x:auto}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .ebar.in .fill{transition:none}
+}
+
+/* --- ambient motion additions: subtle, additive, non-intrusive --- */
+@keyframes ringp{0%{transform:scale(.5);opacity:.85}100%{transform:scale(2.1);opacity:0}}
+.ringp{transform-box:fill-box;transform-origin:center;animation:ringp 2.8s ease-out infinite}
+@keyframes seqGlow{0%,100%{opacity:.35}18%{opacity:1}40%{opacity:.35}}
+.seqr1{animation:seqGlow 4.5s ease-in-out infinite}
+.seqr2{animation:seqGlow 4.5s ease-in-out .9s infinite}
+.seqr3{animation:seqGlow 4.5s ease-in-out 1.8s infinite}
+.flowseq{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out infinite}
+.flowseq2{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out .9s infinite}
+.flowseq3{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out 1.8s infinite}
+.seqr4{animation:seqGlow 4.5s ease-in-out 2.7s infinite}
+.seqr5{animation:seqGlow 4.5s ease-in-out 3.6s infinite}
+.flowseq4{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out 2.7s infinite}
+.flowseq5{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out 3.6s infinite}
+/* 4-up comparison cards */
+.cmp4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-bottom:1.4rem}
+@media(max-width:1080px){.cmp4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cmp4{grid-template-columns:1fr}}
+.cmp4 .card{text-align:left}
+.cmp4 .big{font-family:var(--disp);font-size:1.15rem;font-weight:800;margin:.5rem 0;line-height:1.25}
+.rate-h{text-align:center;font-family:var(--disp);font-size:1.55rem;font-weight:800;letter-spacing:-.01em;margin:3.2rem 0 0}
+
+/* ===== mini-poll component ===== */
+/* Mini-poll component styles — compact, theme-aware via CSS vars with fallbacks.
+   Works inside these infographics (which define --card, --ink, etc.)
+   and standalone. */
+mini-poll { display: block; }
+.mpoll {
+  max-width: 620px;
+  margin: 2.2rem auto;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background:
+    linear-gradient(var(--card, #0d1020), var(--card, #0d1020)) padding-box,
+    linear-gradient(135deg, var(--mpc1, #fdba74), var(--mpc2, #a3e635)) border-box;
+  font-family: inherit;
+  overflow: hidden;
+}
+/* slim collapsed teaser */
+.mpoll-teaser {
+  display: flex; align-items: center; gap: .6rem;
+  width: 100%; cursor: pointer; text-align: left;
+  padding: .75rem 1rem; border: 0; background: transparent;
+  color: var(--muted, #a9b1c9); font-size: .88rem;
+}
+.mpoll-teaser:hover { background: rgba(255,255,255,.03); }
+.mpoll-teaser:focus-visible { outline: 2px solid var(--amber, #C9A94E); outline-offset: -2px; }
+.mpoll-teaser-dot {
+  flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--mpc1, #fdba74);
+  box-shadow: 0 0 10px var(--mpc1, #fdba74);
+  animation: mpulse 2.4s ease-in-out infinite;
+}
+@keyframes mpulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+.mpoll-teaser-text {
+  flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mpoll-teaser-chev {
+  flex: 0 0 auto; transition: transform .2s; color: var(--faint, #7f88a5);
+}
+.mpoll.open .mpoll-teaser-chev { transform: rotate(180deg); }
+/* animated expand/collapse */
+.mpoll-bodywrap {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows .45s cubic-bezier(.25,.8,.3,1);
+}
+.mpoll.open .mpoll-bodywrap { grid-template-rows: 1fr; }
+.mpoll-clip { overflow: hidden; min-height: 0; }
+.mpoll-body {
+  padding: 0 1.4rem 1.3rem;
+  opacity: 0; transform: translateY(-10px);
+  transition: opacity .32s ease, transform .45s cubic-bezier(.25,.8,.3,1);
+}
+.mpoll.open .mpoll-body { opacity: 1; transform: translateY(0); }
+.mpoll-kicker {
+  font-size: .78rem; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted, #a9b1c9);
+  margin-bottom: .6rem;
+}
+/* single top-of-page banner (preview mode only) */
+.mpoll-topbanner {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  max-width: 620px; margin: 0 auto 1.4rem; padding: .6rem 1.2rem;
+  border-radius: 999px; font-size: .82rem; font-weight: 700; color: #0a0c14;
+  background: linear-gradient(100deg, var(--acc1, #fdba74), var(--acc2, #a3e635), var(--acc3, #fb923c));
+}
+.mpoll-topbanner-dot {
+  flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%;
+  background: #0a0c14;
+  animation: mpulse 2.4s ease-in-out infinite;
+}
+.mpoll-field { border: 0; margin: 0; padding: 0; }
+.mpoll-q {
+  font-size: 1.12rem; font-weight: 800; line-height: 1.35;
+  color: var(--ink, #edf0f9); margin-bottom: .9rem; padding: 0;
+}
+.mpoll-opts { display: grid; gap: .55rem; }
+.mpoll-opt {
+  display: flex; align-items: center; gap: .7rem;
+  width: 100%; text-align: left; cursor: pointer;
+  padding: .72rem .9rem; border-radius: 12px;
+  border: 1px solid var(--line, rgba(255,255,255,.09));
+  background: rgba(255,255,255,.03); color: var(--ink, #edf0f9);
+  font-size: .95rem; transition: border-color .15s, background .15s, transform .15s;
+}
+.mpoll-opt:hover { border-color: var(--amber, #C9A94E); background: rgba(255,255,255,.05); }
+.mpoll-opt:focus-visible { outline: 2px solid var(--amber, #C9A94E); outline-offset: 2px; }
+.mpoll-opt.sel { border-color: var(--amber, #C9A94E); background: rgba(251,191,36,.10); }
+.mpoll-emoji { font-size: 1.25rem; flex: 0 0 auto; }
+.mpoll-label { flex: 1; }
+.mpoll-vote, .mpoll-again {
+  display: block; width: 100%; margin-top: .9rem; padding: .8rem;
+  border: 0; border-radius: 12px; cursor: pointer;
+  font-size: 1rem; font-weight: 800; color: #0a0c14;
+  background: linear-gradient(100deg, var(--acc1, #fdba74), var(--acc2, #a3e635));
+  transition: transform .15s, opacity .15s;
+}
+.mpoll-vote:hover:not(:disabled), .mpoll-again:hover { transform: translateY(-1px); }
+.mpoll-vote:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.mpoll-note {
+  margin-top: .7rem; font-size: .88rem; color: #C9A94E;
+  border: 1px dashed rgba(251,191,36,.4); border-radius: 10px; padding: .6rem .8rem;
+}
+.mpoll-bars { display: grid; gap: .6rem; margin-top: .4rem; }
+.mpoll-rowtop {
+  display: flex; justify-content: space-between; gap: .8rem;
+  font-size: .9rem; color: var(--ink, #edf0f9); margin-bottom: .28rem;
+}
+.mpoll-pct { font-weight: 800; color: var(--muted, #a9b1c9); flex: 0 0 auto; }
+.mpoll-mine { color: var(--amber, #C9A94E); font-weight: 700; font-size: .8rem; }
+.mpoll-track {
+  height: 10px; border-radius: 999px; overflow: hidden;
+  background: rgba(255,255,255,.07);
+}
+.mpoll-fill {
+  height: 100%; width: 0; border-radius: 999px;
+  background: linear-gradient(90deg, var(--acc1, #fdba74), var(--acc2, #a3e635), var(--acc3, #fb923c));
+  transition: width .9s cubic-bezier(.22,.8,.3,1);
+}
+.mpoll-row.mine .mpoll-fill { box-shadow: 0 0 10px rgba(251,191,36,.45); }
+.mpoll-total {
+  margin-top: .8rem; font-size: .85rem; color: var(--faint, #7f88a5);
+}
+.mpoll-sub { margin-top: .8rem; font-size: .9rem; color: var(--muted, #a9b1c9); }
+.mpoll-count { font-weight: 800; color: var(--ink, #edf0f9); font-variant-numeric: tabular-nums; }
+.mpoll-disc {
+  margin-top: .9rem; padding-top: .7rem;
+  border-top: 1px dashed var(--line, rgba(255,255,255,.09));
+  font-size: .76rem; line-height: 1.5; color: var(--faint, #7f88a5);
+}
+.mpoll-loading { color: var(--faint, #7f88a5); font-size: .9rem; padding: .6rem 0; }
+@media (prefers-reduced-motion: reduce) {
+  .mpoll-opt, .mpoll-vote, .mpoll-again, .mpoll-fill, .mpoll-teaser-chev,
+  .mpoll-bodywrap, .mpoll-body { transition: none; }
+  .mpoll-teaser-dot { animation: none; }
+  .mpoll-body { opacity: 1; transform: none; }
+}
+@media (max-width: 560px) {
+  .mpoll { margin: 1.6rem .2rem; }
+  .mpoll-body { padding: 0 1rem 1.1rem; }
+  .mpoll-q { font-size: 1.02rem; }
+}
+
+.hero-strip{max-width:46rem;margin:0 auto 1.6rem;font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:.55rem 1rem;background:rgba(255,255,255,.03)}
+.hero-strip strong{color:var(--amber)}
+#dots{overflow:hidden}
+.kv .k{flex:0 1 auto}
+.kv p{min-width:0}
+
+/* ---------- back-to-top tile ---------- */
+.totop-wrap{max-width:620px;margin:0 auto;padding:0 1.25rem 3.2rem;}
+#toTop{display:flex;align-items:center;gap:.85rem;width:100%;min-height:42px;padding:.5rem 1.15rem;
+  border:1px solid transparent;border-radius:18px;cursor:pointer;
+  background:linear-gradient(var(--card),var(--card)) padding-box,
+             linear-gradient(100deg,#D9BE6B 5%,#6B8CAE 50%,#2E4459 95%) border-box;
+  color:var(--muted);font-family:var(--font);font-size:.93rem;font-weight:600;letter-spacing:.01em;
+  transition:color .25s ease,box-shadow .25s ease;}
+#toTop:hover{color:var(--ink);box-shadow:inset 0 0 0 100px rgba(217,190,107,.08);}
+#toTop:focus-visible{outline:2px solid #D9BE6B;outline-offset:3px;}
+#toTop .orb{width:8px;height:8px;border-radius:50%;background:#6B8CAE;flex:0 0 auto;animation:orbpulse 2.2s ease-in-out infinite;}
+@keyframes orbpulse{0%,100%{box-shadow:0 0 0 0 rgba(107,140,174,.55);}50%{box-shadow:0 0 12px 3px rgba(107,140,174,.6);}}
+#toTop .lbl{flex:1 1 auto;text-align:center;}
+#toTop .chev{flex:0 0 auto;display:block;}
+@media (prefers-reduced-motion:reduce){#toTop .orb{animation:none;}}
+</style>
+</head>
+<body>
+<svg class="sr-only" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="triGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D9BE6B"/><stop offset="50%" stop-color="#6B8CAE"/><stop offset="100%" stop-color="#2E4459"/>
+    </linearGradient>
+  </defs>
+</svg>
+<div class="bg-grad" aria-hidden="true"></div>
+<svg id="dots" aria-hidden="true"></svg>
+<div class="orb o1" aria-hidden="true"></div><div class="orb o2" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div id="progress" aria-hidden="true"></div>
+<div id="themeToggle" role="group" aria-label="Color theme">
+  <button type="button" class="tt-opt" data-mode="light" aria-pressed="false">
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg><span>Light</span>
+  </button>
+  <button type="button" class="tt-opt" data-mode="dark" aria-pressed="true">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 14.2A8.5 8.5 0 0 1 9.8 3.6a.7.7 0 0 0-.9-.9 10.5 10.5 0 1 0 12.4 12.4.7.7 0 0 0-.9-.9Z"/></svg><span>Dark</span>
+  </button>
+</div>
+<aside class="toc" aria-label="Chapters">
+  <div class="brand">Tesamorelin Gelling<br><span class="g">the cloud-and-gel science</span></div>
+  <div class="toc-pill" aria-hidden="true"></div>
+  <a href="#ch1"><span class="n">01</span>Delicate Molecule</a>
+  <a href="#ch2"><span class="n">02</span>Thermal Shock</a>
+  <a href="#ch3"><span class="n">03</span>Agitation</a>
+  <a href="#ch4"><span class="n">04</span>Concentration</a>
+  <a href="#ch5"><span class="n">05</span>Acetic Acid Angle</a>
+  <a href="#ch6"><span class="n">06</span>AA-First Protocol</a>
+  <a href="#ch7"><span class="n">07</span>Inside the Gel</a>
+  <a href="#ch8"><span class="n">08</span>Clarity Rule</a>
+  <a href="#ch9"><span class="n">09</span>Glossary</a>
+  <a href="#ch10"><span class="n">10</span>Takeaways</a>
+</aside>
+<nav class="chapters" aria-label="Chapters"><div class="rail" id="rail">
+    <a href="#ch1">Delicate Molecule</a>
+    <a href="#ch2">Thermal Shock</a>
+    <a href="#ch3">Agitation</a>
+    <a href="#ch4">Concentration</a>
+    <a href="#ch5">Acetic Acid Angle</a>
+    <a href="#ch6">AA-First Protocol</a>
+    <a href="#ch7">Inside the Gel</a>
+    <a href="#ch8">Clarity Rule</a>
+    <a href="#ch9">Glossary</a>
+    <a href="#ch10">Takeaways</a>
+</div></nav>
+<header class="hero">
+  <div class="badge"><span class="dot"></span>Formulation science &middot; Peptide stability &middot; Educational only</div>
+  <div class="hero-strip"><strong>Educational only</strong> &mdash; not medical advice. Full disclaimer at the bottom of this page.</div>
+  <h1>Tesamorelin Gelling<br><span class="g">the cloud-and-gel science</span></h1>
+  <p class="sub">Tesamorelin is a physically delicate, hydrophobic peptide &mdash; and under the wrong conditions it <strong>clouds or gels</strong> instead of dissolving cleanly. Thermal shock, agitation, concentration, and pH decide which way it goes. Here is the chemistry behind the gel, the factors that trigger it, and the trade-offs of the workarounds.</p>
+  <div class="quickread">
+    <span class="tag">Quick read</span>
+    <p><strong>Gelling</strong> &mdash; a cloudy or gelatinous suspension instead of a clear solution &mdash; is tesamorelin&rsquo;s signature failure mode. The peptide is <strong>hydrophobic and physically delicate</strong>: temperature mismatches trigger near-instant aggregation, shaking and hard liquid streams knot chains together, and crowded, high-concentration mixes gel far more readily. <strong>Acetic acid water</strong> can force it into solution by raising the peptide&rsquo;s positive charge &mdash; but it stings, can degrade the peptide, and is often unnecessary when the real culprit is <strong>poor diluent quality</strong>. Once a cross-linked gel network forms, it is stubborn &mdash; and the clinical rule is absolute: <strong>clear and colorless, or it isn&rsquo;t usable</strong>.</p>
+  </div>
+</header>
+<main class="wrap">
+<section class="chapter" id="ch1">
+  <span class="eyebrow"><span class="n">01</span>Delicate molecule</span>
+  <h2>A <span class="hl">delicate</span> molecule</h2>
+  <p class="lede">Tesamorelin is known to be physically delicate and hydrophobic &mdash; prone to <strong>rapid precipitation or gelling</strong> (a cloudy or gelatinous suspension) when conditions turn against it.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Hydrophobic by nature</h3><p>Parts of the peptide chain shy away from water, preferring the company of <strong>other peptide chains</strong> &mdash; the seed of every clump.</p></div>
+<div class="card teal reveal"><h3>Cloud vs. gel</h3><p>Sometimes it crashes out as cloudy particles (precipitation); sometimes it forms a wispy, <strong>cross-linked gel network</strong>. Same root cause, different architecture.</p></div>
+<div class="card org reveal"><h3>Not always a bad batch</h3><p>Gelling is often about <strong>conditions</strong> &mdash; temperature, handling, concentration &mdash; rather than the powder itself.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>Think of it as a peptide that would rather <strong>hold hands with itself than mix with water</strong>. Give it any excuse &mdash; a chill, a shake, a crowd &mdash; and it takes it.</p></div>
+</section>
+<section class="chapter" id="ch2">
+  <span class="eyebrow"><span class="n">02</span>Thermal shock</span>
+  <h2><span class="hl">Thermal shock</span>: the instant trigger</h2>
+  <p class="lede">The fastest route to a gelled vial is a <strong>temperature mismatch</strong>: cold liquid meeting room-temperature dry powder &mdash; or the reverse. The sudden change can make peptide chains aggregate almost instantly.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Mismatched temps</h3><p>Dry powder and diluent at <strong>different temperatures</strong> &mdash; the classic setup for rapid, sometimes instant, aggregation.</p></div>
+<div class="card teal reveal"><h3>Why it happens</h3><p>A sharp thermal gradient stresses chains as they hydrate, and stressed hydrophobic chains <strong>clump instead of dissolving</strong>.</p></div>
+<div class="card org reveal"><h3>Equilibration matters</h3><p>When everything involved rests at the <strong>same stable room temperature</strong> before mixing, this trigger drops away.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>Like pouring ice water into hot glass &mdash; <strong>the shock, not the water, does the damage</strong>. Tesamorelin&rsquo;s chains react to sudden temperature swings by grabbing each other.</p></div>
+</section>
+<div class="diagram reveal">
+  <div class="d-title">Thermal shock &mdash; same peptide, different temperatures</div>
+  <svg viewBox="0 0 640 250" role="img" aria-label="Two vials: matched temperatures stay clear, mismatched temperatures clump">
+    <defs>
+      <linearGradient id="tgflow" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#D9BE6B"/><stop offset="1" stop-color="#6B8CAE"/>
+      </linearGradient>
+    </defs>
+    <text x="160" y="28" text-anchor="middle" fill="#a9b1c9" font-size="14" font-weight="700">TEMPS MATCHED</text>
+    <text x="480" y="28" text-anchor="middle" fill="#a9b1c9" font-size="14" font-weight="700">THERMAL SHOCK</text>
+    <g>
+      <rect x="110" y="60" width="100" height="140" rx="14" fill="none" stroke="#D9BE6B" stroke-width="4"/>
+      <rect x="118" y="130" width="84" height="62" rx="8" fill="#D9BE6B" opacity="0.18"/>
+      <g fill="#D9BE6B" opacity="0.85">
+        <circle class="settle" cx="140" cy="160" r="4"/><circle class="settle" cx="165" cy="150" r="4"/><circle class="settle" cx="185" cy="165" r="4"/><circle class="settle" cx="152" cy="178" r="4"/><circle class="settle" cx="176" cy="182" r="4"/>
+      </g>
+      <text x="160" y="225" text-anchor="middle" fill="#a9b1c9" font-size="13">clear solution</text>
+    </g>
+    <g>
+      <rect x="430" y="60" width="100" height="140" rx="14" fill="none" stroke="#6B8CAE" stroke-width="4"/>
+      <rect x="438" y="130" width="84" height="62" rx="8" fill="#6B8CAE" opacity="0.18"/>
+      <g fill="#6B8CAE">
+        <circle class="clump" cx="460" cy="155" r="9"/><circle class="clump" cx="485" cy="170" r="11"/><circle class="clump" cx="470" cy="182" r="8"/><circle class="clump" cx="498" cy="152" r="7"/>
+      </g>
+      <path d="M430 95 L400 70 M530 95 L560 70" stroke="#6B8CAE" stroke-width="3" stroke-linecap="round" class="zap"/>
+      <text x="480" y="225" text-anchor="middle" fill="#a9b1c9" font-size="13">rapid aggregation</text>
+    </g>
+    <path d="M285 140 h70" stroke="url(#tgflow)" stroke-width="3" stroke-dasharray="7 6" class="dashflow"/>
+    <style>
+      .settle{animation:settle 3s ease-in-out infinite}
+      @keyframes settle{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+      .clump{animation:clump 1.6s ease-in-out infinite}
+      @keyframes clump{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+      .zap{animation:zap 1.6s ease-in-out infinite}
+      @keyframes zap{0%,100%{opacity:.25}50%{opacity:1}}
+      .dashflow{animation:dashm 1.2s linear infinite}
+      @keyframes dashm{to{stroke-dashoffset:-26}}
+      @media (prefers-reduced-motion:reduce){.settle,.clump,.zap,.dashflow{animation:none}}
+    </style>
+  </svg>
+  <div class="d-cap">Observed pattern: matched temperatures hydrate calmly into a clear solution; a sharp thermal mismatch shocks hydrophobic chains into clumping on contact.</div>
+</div>
+<section class="chapter" id="ch3">
+  <span class="eyebrow"><span class="n">03</span>Agitation</span>
+  <h2><span class="hl">Agitation</span> makes it worse</h2>
+  <p class="lede"><strong>Mechanical agitation</strong> is the second classic trigger. Shaking a vial &mdash; or firing the diluent stream directly into the powder bed &mdash; gives hydrophobic chains the collisions they need to lock together.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Shaking</h3><p>Vigorous shaking whips air and energy into the solution &mdash; <strong>exactly what a delicate peptide doesn&rsquo;t want</strong>.</p></div>
+<div class="card teal reveal"><h3>Direct impact</h3><p>A hard stream blasting into dry powder creates <strong>local turbulence</strong> &mdash; concentrated chaos right at the impact point.</p></div>
+<div class="card org reveal"><h3>Gentle handling</h3><p>Calm, gradual hydration &mdash; liquid easing down the glass, stillness afterward &mdash; lets chains <strong>dissolve instead of colliding</strong>.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>Trying to untangle necklaces by <strong>shaking the box</strong>. Gentle patience works; violence knots everything tighter.</p></div>
+</section>
+<section class="chapter" id="ch4">
+  <span class="eyebrow"><span class="n">04</span>Concentration</span>
+  <h2><span class="hl">Concentration</span>: crowding breeds gels</h2>
+  <p class="lede">Tesamorelin needs <strong>more fluid volume</strong> than smaller peptides. Crowd too much peptide into too little liquid and the chains can&rsquo;t help but find each other &mdash; high-concentration mixes gel far more readily.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Crowded chains</h3><p>At high concentration every chain is surrounded by other chains &mdash; aggregation becomes <strong>a numbers game</strong>.</p></div>
+<div class="card teal reveal"><h3>Dilution as a lever</h3><p>More fluid volume per vial gives each chain room to <strong>hydrate individually</strong> instead of networking.</p></div>
+<div class="card org reveal"><h3>Small peptides differ</h3><p>Compact peptides like GHRPs tolerate tighter mixes; tesamorelin&rsquo;s size and hydrophobicity <strong>demand more room</strong>.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>A crowded elevator vs. an empty one. <strong>Pack the chains in tight and they&rsquo;ll link arms</strong>; give them space and they behave.</p></div>
+</section>
+<section class="chapter" id="ch5">
+  <span class="eyebrow"><span class="n">05</span>Acetic acid angle</span>
+  <h2>The <span class="hl">acetic acid</span> angle</h2>
+  <p class="lede">Acetic acid (AA) water <strong>lowers the pH</strong> of the solution, raising the peptide&rsquo;s net positive charge &mdash; like charges repel, so chains push apart instead of clumping. Powerful chemistry, with real trade-offs.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Charge to the rescue</h3><p>Lower pH &rarr; <strong>more positive charge</strong> on the chain &rarr; chains repel each other &rarr; aggregation drops. That is the mechanism.</p></div>
+<div class="card teal reveal"><h3>The sting trade-off</h3><p>Acidic solutions <strong>sting</strong> &mdash; low-pH injections bring noticeably more burning, redness, and skin irritation.</p></div>
+<div class="card org reveal"><h3>Integrity questions</h3><p>Prolonged acid exposure can <strong>alter or degrade</strong> sensitive peptide sequences, depending on conditions.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>Acid is a <strong>crowbar</strong> &mdash; it pries the chains apart beautifully, but it stings going in and can rough up the peptide if overused. And sometimes the real villain was the water all along: poor-quality BAC water (or excess benzyl alcohol) mimics pH problems, and <strong>medical-grade BAC water often resolves gelling with no acid needed</strong>.</p></div>
+</section>
+<div class="diagram reveal">
+  <div class="d-title">pH sets the charge &mdash; charge decides whether chains clump or repel</div>
+  <svg viewBox="0 0 640 250" role="img" aria-label="Neutral pH chains clump together; low pH chains carry positive charges and repel">
+    <defs>
+      <linearGradient id="tphgrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#6B8CAE"/><stop offset="1" stop-color="#D9BE6B"/>
+      </linearGradient>
+    </defs>
+    <text x="160" y="28" text-anchor="middle" fill="#a9b1c9" font-size="14" font-weight="700">NEUTRAL pH &middot; LOW CHARGE</text>
+    <text x="480" y="28" text-anchor="middle" fill="#a9b1c9" font-size="14" font-weight="700">LOW pH &middot; HIGH + CHARGE</text>
+    <g stroke="#6B8CAE" stroke-width="7" stroke-linecap="round" fill="none">
+      <path class="tangle" d="M110 90 Q140 70 165 95 T215 90"/>
+      <path class="tangle" d="M105 130 Q145 115 170 135 T220 128"/>
+      <path class="tangle" d="M115 170 Q150 155 180 172 T215 168"/>
+    </g>
+    <text x="160" y="225" text-anchor="middle" fill="#a9b1c9" font-size="13">chains attract &middot; clumps form</text>
+    <g stroke="#D9BE6B" stroke-width="7" stroke-linecap="round" fill="none">
+      <path d="M420 95 h80"/><path d="M425 135 h70"/><path d="M430 175 h75"/>
+    </g>
+    <g font-size="15" fill="#D9BE6B" font-weight="700" text-anchor="middle">
+      <text x="405" y="100">+</text><text x="515" y="100">+</text>
+      <text x="410" y="140">+</text><text x="510" y="140">+</text>
+      <text x="415" y="180">+</text><text x="520" y="180">+</text>
+    </g>
+    <g stroke="#D9BE6B" stroke-width="2" opacity="0.7">
+      <path class="repel" d="M395 95 l-14 -8 M525 95 l14 -8"/>
+      <path class="repel" d="M400 135 l-14 0 M520 135 l14 0"/>
+      <path class="repel" d="M405 175 l-14 8 M530 175 l14 8"/>
+    </g>
+    <text x="480" y="225" text-anchor="middle" fill="#a9b1c9" font-size="13">like charges repel &middot; stays dissolved</text>
+    <path d="M285 130 h70" stroke="url(#tphgrad)" stroke-width="3" stroke-dasharray="7 6" class="dashflow"/>
+    <style>
+      .tangle{animation:tangle 2.4s ease-in-out infinite}
+      @keyframes tangle{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
+      .repel{animation:repel 2s ease-in-out infinite}
+      @keyframes repel{0%,100%{opacity:.35}50%{opacity:1}}
+      .dashflow{animation:dashm 1.2s linear infinite}
+      @keyframes dashm{to{stroke-dashoffset:-26}}
+      @media (prefers-reduced-motion:reduce){.tangle,.repel,.dashflow{animation:none}}
+    </style>
+  </svg>
+  <div class="d-cap">The core mechanism: at neutral pH the chains carry little charge and drift together; acidic pH loads them with positive charge, and repulsion keeps them apart and dissolved.</div>
+</div>
+<section class="chapter" id="ch6">
+  <span class="eyebrow"><span class="n">06</span>Step-by-step</span>
+  <h2>The <span class="hl">AA-first</span> protocol</h2>
+  <p class="lede">When a batch refuses to dissolve at neutral pH, some research protocols use a <strong>dual-solvent, acid-assisted method</strong>: a small acidic prime to break the hydrophobicity, then dilution with BAC water. Here is the method as described &mdash; and the precautions attached to it.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Step 1: the acidic prime</h3><p>Draw <strong>0.2&ndash;0.5 mL of 0.6% acetic acid water</strong> and inject it gently down the inside glass wall of the dry vial. Wait <strong>2&ndash;5 minutes without shaking</strong>. The acid immediately protonates the chain, breaking hydrophobic attraction &mdash; the powder dissolves into a <strong>completely clear concentrate</strong>.</p></div>
+<div class="card teal reveal"><h3>Step 2: dilute with BAC water</h3><p>Once the peptide is 100% dissolved and clear, draw <strong>1.5&ndash;2.5 mL of bacteriostatic water</strong> and add it slowly. This <strong>dilutes the acid</strong> &mdash; minimizing injection-site sting &mdash; while introducing the benzyl alcohol needed to <strong>preserve the solution</strong> for multi-dose storage.</p></div>
+<div class="card org reveal"><h3>Key precautions</h3><p>Use a <strong>separate needle and syringe for each bottle</strong> &mdash; never draw AA and BAC water with the same syringe, or the stock BAC bottle is permanently acidified. Keep the AA fraction <strong>minimal (&le;0.5 mL)</strong>: less acid means less sting and irritation. And confirm <strong>room temperature throughout</strong> &mdash; cold components can trigger aggregation alongside everything else.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p><strong>Acid first to unlock, BAC second to dilute and preserve.</strong> The prime dissolves; the dilution makes it livable. But every drop of acid is a trade-off &mdash; sting now, integrity questions later &mdash; which is why the method starts with the smallest acidic volume that does the job.</p></div>
+</section>
+<section class="chapter" id="ch7">
+  <span class="eyebrow"><span class="n">07</span>Inside the gel</span>
+  <h2><span class="hl">Inside</span> the gel</h2>
+  <p class="lede">A gel is not just thick liquid &mdash; it is a <strong>cross-linked network</strong> of peptide chains, a mesh that traps water. That architecture is exactly why gels are so stubborn.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>A mesh, not a soup</h3><p>Chains link into a loose 3D network &mdash; that is what gives the <strong>gelatinous, wispy texture</strong>.</p></div>
+<div class="card teal reveal"><h3>Why acid-after fails</h3><p>Once the network forms, liquid <strong>can&rsquo;t easily penetrate the matrix</strong> to change the pH inside &mdash; intervening afterward is far less effective than getting the chemistry right from the start.</p></div>
+<div class="card org reveal"><h3>Temporary gels exist</h3><p>Some gels are just <strong>slow hydration</strong> &mdash; the network can clear on its own as water fully works in over hours.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>A fishing net vs. loose rope. <strong>Once the chains weave themselves into a net</strong>, pouring something over it barely reaches the middle.</p></div>
+</section>
+<section class="chapter" id="ch8">
+  <span class="eyebrow"><span class="n">08</span>Clarity rule</span>
+  <h2>The <span class="hl">clarity</span> rule</h2>
+  <p class="lede">The clinical standard is unambiguous: reconstituted tesamorelin must be <strong>completely clear and colorless</strong> before use. Anything cloudy or gelled is not ready &mdash; and not safe to treat as if it were.</p>
+<div class="grid3">
+<div class="card sky reveal"><h3>Clear and colorless</h3><p>The <strong>FDA clinical standard</strong> for reconstituted tesamorelin &mdash; full stop, no exceptions.</p></div>
+<div class="card teal reveal"><h3>Absorption changes</h3><p>Incomplete dissolution <strong>alters subcutaneous absorption</strong> &mdash; what the body receives is no longer predictable.</p></div>
+<div class="card org reveal"><h3>Tissue reactions</h3><p>Cloudy or gelled solution can provoke <strong>severe local tissue reactions</strong> at the site.</p></div>
+</div>
+<div class="plain reveal"><div class="plabel">Plain English</div><p>If it&rsquo;s not crystal clear, <strong>it&rsquo;s not done &mdash; and it&rsquo;s not usable</strong>. Cloudiness is the vial telling you the chemistry isn&rsquo;t finished.</p></div>
+</section>
+<section class="chapter" id="ch9">
+  <span class="eyebrow"><span class="n">09</span>Glossary</span>
+  <h2>Understanding <span class="hl">tesamorelin gelling</span> terminology</h2>
+  <p class="lede">Eight terms, each with the science and a plain-English translation. Tap any term to expand it.</p>
+<div class="gloss">
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#D9BE6B22"/><rect x="14" y="18" width="20" height="14" rx="3" fill="none" stroke="#D9BE6B" stroke-width="2.5"/><path d="M18 18v-4h12v4M24 10v4" stroke="#D9BE6B" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="25" r="3" fill="#D9BE6B"/></svg><span class="term">Lyophilized</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>Freeze-dried: water is removed from a frozen solution by sublimation under vacuum, leaving a dry, porous powder cake. Lyophilization preserves delicate peptides for storage, but the resulting powder must be rehydrated (reconstituted) before use — and the dry, high-surface-area cake is exactly what thermal shock and direct liquid impact act upon.</p><div class="plain"><span class="plabel">Plain English</span>Freeze-dried into a dry powder for storage. It keeps the peptide stable on the shelf — but that airy dry cake is also what reacts badly to cold liquid or a hard stream.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#6B8CAE22"/><circle cx="18" cy="24" r="7" fill="none" stroke="#6B8CAE" stroke-width="2.5"/><circle cx="31" cy="24" r="7" fill="none" stroke="#6B8CAE" stroke-width="2.5"/><path d="M25 24h-1" stroke="#6B8CAE" stroke-width="4" stroke-linecap="round"/><path d="M10 38c8-3 16 3 28 0" stroke="#6B8CAE" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg><span class="term">Hydrophobic</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>Water-avoiding: regions of a molecule (often non-polar amino acid side chains) that are energetically unfavorable to expose to water. Hydrophobic patches prefer contact with each other, so hydrophobic peptides in water tend to self-associate — the fundamental drive behind tesamorelin's clumping, precipitation, and gel formation whenever conditions destabilize the solution.</p><div class="plain"><span class="plabel">Plain English</span>Afraid of water. Parts of the peptide would rather touch other peptide parts than touch water — that self-clinging instinct is the engine behind every clump and gel.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#2E445922"/><g fill="#2E4459"><circle cx="17" cy="18" r="5"/><circle cx="28" cy="22" r="6"/><circle cx="20" cy="30" r="5"/><circle cx="31" cy="32" r="4"/></g><path d="M12 40c10-4 18 2 26-2" stroke="#2E4459" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg><span class="term">Aggregation</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>The coming-together of individual peptide molecules into larger assemblies — from small soluble clusters to visible particles to cross-linked gel networks. Aggregation is driven by hydrophobic attraction, concentration, temperature stress, and mechanical energy. It is the umbrella process behind both precipitation (cloudy particles) and gelling (network formation) described in this infographic.</p><div class="plain"><span class="plabel">Plain English</span>Peptide molecules gathering into crowds — small clusters first, then visible particles, then full gel networks. Every cloud and gel in this piece is aggregation at work.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#D9BE6B22"/><path d="M24 6v10" stroke="#D9BE6B" stroke-width="2.5" stroke-linecap="round"/><path d="M18 32a8 8 0 1 0 12 0" fill="none" stroke="#D9BE6B" stroke-width="2.5" stroke-linecap="round"/><path d="M24 20v6" stroke="#D9BE6B" stroke-width="2.5" stroke-linecap="round"/><path d="M32 12l6-6M16 12l-6-6" stroke="#D9BE6B" stroke-width="2" stroke-linecap="round"/></svg><span class="term">Thermal shock</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>Damage caused by a sudden temperature change rather than by heat or cold itself. When cold diluent meets room-temperature lyophilized powder (or vice versa), the steep thermal gradient stresses peptide chains during the critical hydration moment, and hydrophobic chains aggregate instead of dissolving — sometimes instantly. Equilibrating all components to the same stable room temperature removes this trigger.</p><div class="plain"><span class="plabel">Plain English</span>Harm from sudden temperature change — not from heat or cold themselves. Cold liquid on room-temp powder shocks the chains mid-hydration and they clump on contact. Same temperature everywhere, no shock.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#6B8CAE22"/><path d="M18 8h12v24a6 6 0 0 1-12 0z" fill="none" stroke="#6B8CAE" stroke-width="2.5"/><path d="M18 18h12" stroke="#6B8CAE" stroke-width="2" opacity=".6"/><path d="M21 26h6" stroke="#6B8CAE" stroke-width="2.5" stroke-linecap="round"/></svg><span class="term">Bacteriostatic water</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>Sterile water containing a small amount (typically 0.9%) of benzyl alcohol as an antimicrobial preservative, allowing a vial to be used for multiple doses. It is the standard neutral-pH diluent for reconstituting peptides. Quality varies between manufacturers — excess benzyl alcohol or impurities in low-grade BAC water can themselves provoke gelling, which is why switching to medical-grade (USP standard) BAC water often resolves problems attributed to pH.</p><div class="plain"><span class="plabel">Plain English</span>Sterile water with a touch of preservative so one vial lasts multiple uses. The standard neutral diluent — but quality varies, and bad BAC water causes gelling that looks exactly like a pH problem.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#2E445922"/><circle cx="24" cy="24" r="12" fill="none" stroke="#2E4459" stroke-width="2.5"/><text x="24" y="29" text-anchor="middle" font-size="13" font-weight="700" fill="#2E4459">OH</text><path d="M24 6v4M24 38v4" stroke="#2E4459" stroke-width="2" stroke-linecap="round"/></svg><span class="term">Benzyl alcohol</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>An aromatic alcohol used at ~0.9% in bacteriostatic water to inhibit bacterial growth in multi-dose vials. At proper levels it is a reliable preservative; at excessive levels — or in poor-quality diluent — it can destabilize delicate peptides and contribute to precipitation and gelling. This is one reason diluent quality, not just pH, belongs in every gelling investigation.</p><div class="plain"><span class="plabel">Plain English</span>The preservative in BAC water that keeps multi-dose vials safe. At the right level it's harmless; too much of it (or impure batches) can itself destabilize peptides and cause the very gelling people blame on pH.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#D9BE6B22"/><text x="15" y="30" font-size="20" font-weight="700" fill="#D9BE6B">+</text><text x="29" y="30" font-size="20" font-weight="700" fill="#D9BE6B" opacity=".45">+</text><path d="M24 8v30" stroke="#D9BE6B" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg><span class="term">Net charge</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>The overall electrical charge of a peptide molecule — the sum of its positive and negative groups at a given pH. Lowering pH adds protons to the chain, increasing net positive charge; like charges repel, so highly charged chains push apart instead of aggregating. This charge-repulsion mechanism is exactly how acetic acid water forces hydrophobic peptides like tesamorelin into solution.</p><div class="plain"><span class="plabel">Plain English</span>A molecule's total electrical charge. Drop the pH and the peptide picks up extra positive charge — and since like charges repel, the chains push apart instead of clumping. That's the whole trick behind the acetic acid workaround.</div></div></div>
+<div class="g-item"><button class="g-q" aria-expanded="false"><svg class="gthumb" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#6B8CAE22"/><path d="M10 14h28M10 24h28M10 34h28" stroke="#6B8CAE" stroke-width="2.5" stroke-linecap="round"/><path d="M18 10v28M30 10v28" stroke="#6B8CAE" stroke-width="2" opacity=".55"/></svg><span class="term">Gel network</span><span class="plus">+</span></button><div class="g-a"><p class="gsci"><span class="gslabel">The science</span>A three-dimensional mesh formed when peptide chains cross-link to each other, trapping water in the spaces between — the structural definition of a gel. Unlike loose precipitate particles, a network is mechanically coherent: it resists re-dissolving, blocks liquids (including acid) from penetrating to its interior, and gives the characteristic wispy, gelatinous texture of a gelled vial.</p><div class="plain"><span class="plabel">Plain English</span>Chains woven into a 3D fishing net that traps water. That net structure is why gels feel gelatinous — and why pouring acid over a formed gel barely reaches the middle.</div></div></div>
+</div>
+</section>
+<section class="chapter" id="ch10">
+  <span class="eyebrow"><span class="n">10</span>Takeaways</span>
+  <h2>The <span class="hl">bottom line</span></h2>
+  <p class="lede">Ten chapters, distilled. Gelling is chemistry with clear causes &mdash; and clear warning signs.</p>
+<div class="take-grid">
+<div class="take reveal"><div class="tk">&#129516;</div><h4>Delicate &amp; hydrophobic</h4><p>Tesamorelin would <strong>rather clump than dissolve</strong> &mdash; gelling is its nature, not always a bad batch.</p></div>
+<div class="take reveal"><div class="tk">&#127777;</div><h4>Thermal shock gels fastest</h4><p><strong>Mismatched temperatures</strong> trigger near-instant aggregation.</p></div>
+<div class="take reveal"><div class="tk">&#127744;</div><h4>Agitation knots it tighter</h4><p>Shaking and hard streams vs. <strong>patience and stillness</strong>.</p></div>
+<div class="take reveal"><div class="tk">&#128167;</div><h4>Crowding breeds gels</h4><p><strong>Concentration is a major lever</strong> &mdash; crowded chains network.</p></div>
+<div class="take reveal"><div class="tk">&#129514;</div><h4>Acid is a crowbar</h4><p>Lower pH &rarr; positive charge &rarr; chains repel. But <strong>sting + degradation risk</strong> ride along.</p></div>
+<div class="take reveal"><div class="tk">&#127981;</div><h4>Blame the water first</h4><p>Poor BAC quality <strong>mimics pH problems</strong> &mdash; medical-grade often fixes it.</p></div>
+<div class="take reveal"><div class="tk">&#128375;</div><h4>Gel is a network</h4><p>Once cross-linked, it&rsquo;s <strong>hard to undo</strong> from the outside.</p></div>
+<div class="take reveal"><div class="tk">&#128269;</div><h4>Clear &amp; colorless or nothing</h4><p>Cloudy or gelled <strong>alters absorption</strong> and risks tissue reactions.</p></div>
+</div>
+</section>
+<div class="totop-wrap">
+  <button id="toTop" type="button" aria-label="Back to top of page">
+    <span class="orb" aria-hidden="true"></span>
+    <span class="lbl">Back to Top</span>
+    <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="disc">
+      <h3>&#9888;&#65039; Educational content &mdash; not medical advice</h3>
+      <p>This page is for <strong>education and entertainment only</strong>. It is not medical advice, not a recommendation, and not a substitute for a qualified healthcare professional. Tesamorelin is a <strong>prescription medication</strong>; the phenomena described here concern its physical chemistry, and individual products and responses vary.</p>
+      <p>This page describes a reconstitution method reported in research contexts for <strong>educational purposes only</strong> &mdash; it is not a recommendation, not guidance to follow, and not medical advice. <strong>Do not attempt</strong> to prepare or administer anything based on this page. Questions about reconstitution or use belong with a <strong>licensed clinician or pharmacist</strong>.</p>
+    </div>
+    <div class="meta">
+      <span>Compiled October 2026</span>
+    </div>
+  </div>
+</footer>
+<div id="doneToast" role="status" aria-live="polite">You made it &mdash; the full story, start to finish.</div>
+<script>
+try{var _t=localStorage.getItem("tesamorelin-gelling-theme");if(_t==="light"||_t==="dark")document.documentElement.setAttribute("data-theme",_t);}catch(e){}
+</script>
+<script>
+(function(){
+"use strict";
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(reduced){try{document.querySelectorAll("svg").forEach(function(s){if(s.pauseAnimations)s.pauseAnimations();});}catch(e){}}
+/* ---------- theme ---------- */
+function setTheme(t){
+  document.documentElement.setAttribute("data-theme",t);
+  try{localStorage.setItem("tesamorelin-gelling-theme",t)}catch(e){}
+  document.querySelectorAll("#themeToggle .tt-opt").forEach(function(b){
+    var on=b.dataset.mode===t;
+    b.classList.toggle("active",on);
+    b.setAttribute("aria-pressed",on?"true":"false");
+  });
+}
+document.querySelectorAll("#themeToggle .tt-opt").forEach(function(b){
+  b.addEventListener("click",function(){setTheme(b.dataset.mode);});
+});
+setTheme(document.documentElement.getAttribute("data-theme")==="light"?"light":"dark");
+/* ---------- ambient dots ---------- */
+(function(){
+  var svg=document.getElementById("dots"),W,H,dots=[];
+  function size(){W=window.innerWidth;H=window.innerHeight;svg.setAttribute("viewBox","0 0 "+W+" "+H);}
+  size();window.addEventListener("resize",size);
+  var NS="http://www.w3.org/2000/svg";
+  var colors=["#D9BE6B","#6B8CAE","#D9BE6B","#2E4459","#6B8CAE","#D9BE6B"];
+  for(var i=0;i<140;i++){
+    var c=document.createElementNS(NS,"circle");
+    var col=colors[i%colors.length];
+    var baseOp=0.30+Math.random()*0.35;
+    var sx=Math.random()*2000,sy=Math.random()*2000;
+    c.setAttribute("r",(1.4+Math.random()*2.2).toFixed(1));
+    c.setAttribute("fill",col);c.setAttribute("opacity",baseOp.toFixed(2));
+    c.style.transform="translate("+sx.toFixed(1)+"px,"+sy.toFixed(1)+"px)";
+    svg.appendChild(c);
+    dots.push({el:c,x:sx,y:sy,
+      vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,
+      baseOp:baseOp,ph:Math.random()*Math.PI*2,sp:0.3+Math.random()*0.7});
+  }
+  var paused=document.hidden;
+  document.addEventListener("visibilitychange",function(){paused=document.hidden;});
+  var t0=0;
+  function tick(ts){
+    requestAnimationFrame(tick);
+    if(paused||reduced)return;
+    if(!t0)t0=ts;var t=(ts-t0)/1000;
+    var w=window.innerWidth,h=window.innerHeight;
+    for(var i=0;i<dots.length;i++){var d=dots[i];
+      d.x+=d.vx;d.y+=d.vy;
+      if(d.x<-20)d.x=w+20;if(d.x>w+20)d.x=-20;
+      if(d.y<-20)d.y=h+20;if(d.y>h+20)d.y=-20;
+      d.el.style.transform="translate("+d.x.toFixed(1)+"px,"+d.y.toFixed(1)+"px)";
+      d.el.style.opacity=(d.baseOp*(0.7+0.3*Math.sin(t*d.sp+d.ph))).toFixed(2);
+    }
+  }
+  if(!reduced)requestAnimationFrame(tick);
+})();
+/* ---------- bead-chain helper (legacy; no-op unless #retaBeads exists) ---------- */
+(function(){
+  var g=document.getElementById("retaBeads");if(!g)return;
+  var NS="http://www.w3.org/2000/svg";
+  var n=39,startX=70,endX=720,y=120,amp=34;
+  for(var i=0;i<n;i++){
+    var t=i/(n-1),x=startX+(endX-startX)*t,yy=y+Math.sin(t*Math.PI*2.2)*amp;
+    var c=document.createElementNS(NS,"circle");
+    c.setAttribute("cx",x.toFixed(1));c.setAttribute("cy",yy.toFixed(1));
+    c.setAttribute("r",i%5===0?11:8.5);
+    c.setAttribute("fill","#0d1020");
+    c.setAttribute("stroke","url(#beadTri)");c.setAttribute("stroke-width","4");
+    g.appendChild(c);
+    if(i<n-1){
+      var t2=(i+1)/(n-1),x2=startX+(endX-startX)*t2,yy2=y+Math.sin(t2*Math.PI*2.2)*amp;
+      var l=document.createElementNS(NS,"line");
+      l.setAttribute("x1",x.toFixed(1));l.setAttribute("y1",yy.toFixed(1));
+      l.setAttribute("x2",x2.toFixed(1));l.setAttribute("y2",yy2.toFixed(1));
+      l.setAttribute("stroke","#3a4160");l.setAttribute("stroke-width","3");
+      g.insertBefore(l,g.firstChild);
+    }
+  }
+})();
+/* ---------- reveal on scroll ---------- */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+},{threshold:0.12,rootMargin:"0px 0px -6% 0px"});
+document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+/* ---------- count-up stats ---------- */
+var cio=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    var el=e.target,end=parseFloat(el.getAttribute("data-count")),
+        dec=parseInt(el.getAttribute("data-decimals")||"0",10),
+        pre=el.getAttribute("data-prefix")||"",suf=el.getAttribute("data-suffix")||"";
+    if(reduced){el.textContent=pre+end.toFixed(dec)+suf;return;}
+    var t0=null,dur=1600;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),ease=1-Math.pow(1-p,3);
+      el.textContent=pre+(end*ease).toFixed(dec)+suf;
+      if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  });
+},{threshold:0.5});
+document.querySelectorAll("[data-count]").forEach(function(el){cio.observe(el);});
+/* ---------- glossary accordion ---------- */
+document.querySelectorAll(".g-item").forEach(function(item){
+  var q=item.querySelector(".g-q"),a=item.querySelector(".g-a");
+  q.addEventListener("click",function(){
+    var open=item.classList.contains("open");
+    document.querySelectorAll(".g-item.open").forEach(function(o){
+      o.classList.remove("open");
+      o.querySelector(".g-a").style.maxHeight="0px";
+      o.querySelector(".g-q").setAttribute("aria-expanded","false");
+    });
+    if(!open){
+      item.classList.add("open");
+      q.setAttribute("aria-expanded","true");
+      requestAnimationFrame(function(){a.style.maxHeight=a.scrollHeight+"px";});
+    }
+  });
+});
+/* ---------- sidebar / rail smooth scroll ---------- */
+document.querySelectorAll('.toc a[href^="#"], nav.chapters a[href^="#"]').forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var id=a.getAttribute("href"),t=id.length>1?document.querySelector(id):null;
+    if(t)t.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});
+    if(history.replaceState&&id.length>1){try{history.replaceState(null,"",id);}catch(err){}}
+  });
+});
+/* ---------- progress + scrollspy ---------- */
+var bar=document.getElementById("progress"),
+    tocBar=document.getElementById("tocBar"),tocPct=document.getElementById("tocPct"),
+    links=Array.prototype.slice.call(document.querySelectorAll(".toc a, nav.chapters a")),
+    rail=document.getElementById("rail"),
+    sections=["ch1","ch2","ch3","ch4","ch5","ch6","ch7","ch8","ch9","ch10"].map(function(id){return document.getElementById(id);}),
+    pill=document.querySelector(".toc-pill"),cur=-1,ticking=false;
+function easeWidth(el,v){el.style.width=v+"%";}
+function update(){
+  ticking=false;
+  var h=document.documentElement,
+      max=h.scrollHeight-h.clientHeight,
+      p=max>0?Math.min(100,Math.max(0,(h.scrollTop||document.body.scrollTop)/max*100)):0;
+  easeWidth(bar,p);
+  if(tocBar)easeWidth(tocBar,p);
+  if(tocPct)tocPct.textContent=Math.round(p)+"%";
+  var idx=0;
+  sections.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<window.innerHeight*0.4)idx=i;});
+  if(idx!==cur){
+    cur=idx;
+    links.forEach(function(a){a.classList.remove("active");});
+    links.forEach(function(a){if(a.getAttribute("href")==="#ch"+(idx+1))a.classList.add("active");});
+    var active=document.querySelector(".toc a.active");
+    if(active&&pill){
+      var tocEl=document.querySelector(".toc"),
+          tr=tocEl.getBoundingClientRect(),ar=active.getBoundingClientRect();
+      pill.style.opacity="1";
+      pill.style.height=active.offsetHeight+"px";
+      pill.style.transform="translateY("+Math.round(ar.top-tr.top)+"px)";
+      if(rail&&window.innerWidth<1200){
+        var ra=rail.querySelector('a[href="#ch'+(idx+1)+'"]');
+        if(ra)rail.scrollTo({left:ra.offsetLeft-24,behavior:reduced?"auto":"smooth"});
+      }
+    }else if(pill){pill.style.opacity="0";}
+  }
+}
+window.addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+window.addEventListener("resize",function(){cur=-1;update();});
+window.addEventListener("load",function(){cur=-1;update();});
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){cur=-1;update();});}
+setTimeout(function(){cur=-1;update();},800);
+update();
+/* ---------- completion confetti ---------- */
+var done=false;
+function fireConfetti(){
+  var c=document.getElementById("confetti"),ctx=c.getContext("2d");
+  c.width=window.innerWidth;c.height=window.innerHeight;
+  c.classList.add("show");
+  var cols=["#D9BE6B","#6B8CAE","#2E4459","#C9A94E","#edf0f9"],parts=[];
+  for(var i=0;i<45;i++)parts.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*0.25,
+    w:4+Math.random()*4,h:5+Math.random()*5,c:cols[i%cols.length],
+    vy:0.7+Math.random()*1.1,ph:Math.random()*Math.PI*2,sw:0.4+Math.random()*0.8,
+    r:Math.random()*Math.PI,vr:-0.06+Math.random()*0.12});
+  var start=null,dur=4200;
+  function frame(ts){
+    if(!start)start=ts;var el=ts-start,p=el/dur;
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.globalAlpha=p>0.7?Math.max(0,1-(p-0.7)/0.3):1;
+    parts.forEach(function(q){q.y+=q.vy;q.ph+=0.02;q.r+=q.vr;
+      var sx=q.x+Math.sin(q.ph)*22*q.sw;
+      ctx.save();ctx.translate(sx,q.y);ctx.rotate(q.r);ctx.fillStyle=q.c;
+      ctx.fillRect(-q.w/2,-q.h/2,q.w,q.h);ctx.restore();});
+    ctx.globalAlpha=1;
+    if(el<dur&&!reduced)requestAnimationFrame(frame);
+    else{c.classList.remove("show");ctx.clearRect(0,0,c.width,c.height);}
+  }
+  if(!reduced)requestAnimationFrame(frame);else c.classList.remove("show");
+}
+var fio=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting&&!done){done=true;
+      fireConfetti();
+      var t=document.getElementById("doneToast");
+      t.classList.add("show");setTimeout(function(){t.classList.remove("show");},4200);
+      fio.disconnect();}
+  });
+},{threshold:0.35});
+fio.observe(document.querySelector("footer"));
+})();
+</script>
+<script>(function(){var b=document.getElementById("toTop");if(!b)return;b.addEventListener("click",function(){var rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;window.scrollTo({top:0,behavior:rm?"auto":"smooth"});});})();</script>
+</body>
+</html>
